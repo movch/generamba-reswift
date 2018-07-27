@@ -1,0 +1,17 @@
+# Template information section
+name: reswift
+summary: Generates boilerplate module fore ReSwift architechure.
+author: Michail Ovchinnikov
+version: 1.0.0
+license: MIT
+
+# The declarations for code files
+code_files:
+- {name: Actions.swift, path: Code/actions.swift.liquid}
+- {name: Reducer.swift, path: Code/reducer.swift.liquid}
+- {name: State.swift, path: Code/state.swift.liquid}
+- {name: ViewController.swift, path: Code/viewcontroller.swift.liquid}
+
+# Template dependencies
+dependencies:
+- ReSwift

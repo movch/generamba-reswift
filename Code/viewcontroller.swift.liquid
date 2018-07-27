@@ -1,0 +1,46 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import ReSwift
+import UIKit
+
+final class {{ module_info.name }}ViewController: UIViewController {
+
+    // MARK: View Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "{{ module_info.name }}"
+        
+        store.dispatch(Fetch{{ module_info.name }}())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        store.subscribe(self) {
+            $0.select {
+                $0.{{ module_info.name | downcase }}State
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        store.unsubscribe(self)
+    }
+}
+
+// MARK: - StoreSubscriber
+
+extension {{ module_info.name }}ViewController: StoreSubscriber {
+    func newState(state: {{ module_info.name }}State) {
+    }
+}
